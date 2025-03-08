@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons :: head}">
+    <title>Manage Hotels</title>
+</head>
+<body>
+<header th:replace="~{fragments/commons::header}"></header>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Manage Hotels</h2>
+
+    <!-- Button to add a new hotel -->
+    <a href="/admin/hotels/add" class="btn btn-success mb-3">Add New Hotel</a>
+
+    <!-- Hotels Table -->
+    <table class="table table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Status</th>
+<!--            <th>Location</th>-->
+            <th>Rooms</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="hotel, iterStat : ${hotels}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${hotel.name}"></td>
+
+<!--            <td th:text="${hotel.location}"></td>-->
+            <td th:text="${hotel.active}?'Active':'Inactive'" ></td>
+            <td th:text="${hotel.rooms.size()}"></td>
+            <td>
+                <a th:href="@{/admin/hotels/edit/{id}(id=${hotel.id})}" class="btn btn-warning btn-sm">Edit</a>
+                <form th:action="@{/admin/hotels/changeStatus/{id}(id=${hotel.id})}" th:method="post" style="display:inline;">
+                    <button type="submit"
+                            th:classappend="${hotel.active} ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm'"
+                            th:text="${hotel.active} ? 'Delete' : 'Activate'"
+                            onclick="return confirm('Are you sure?');">
+                    </button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

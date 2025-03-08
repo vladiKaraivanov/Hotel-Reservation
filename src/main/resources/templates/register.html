@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/commons :: head}">
+    <title>Registration Page</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0;">
+<header th:replace="~{fragments/commons::header}"></header>
+
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <div style="background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h2 style="margin-bottom: 20px; text-align: center;">Register</h2>
+        <form th:action="@{/users/register}" th:method="POST" th:object="${userRegisterBindingModel}">
+            <label for="username" style="display: block; margin: 10px 0 5px;">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+            <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-warning">Error Text Here</p>
+
+            <label for="email" style="display: block; margin: 10px 0 5px;">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-warning">Error Text Here</p>
+
+            <label for="password" style="display: block; margin: 10px 0 5px;">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-warning">Error Text Here</p>
+
+            <label for="confirmPassword" style="display: block; margin: 10px 0 5px;">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password"
+                   style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;">
+            <p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-warning">Error Text Here</p>
+
+            <input type="submit" value="Register"
+                   style="width: 100%; padding: 10px; margin-top: 20px; background-color: #4285f4; border: none; border-radius: 3px; color: white; font-size: 16px; cursor: pointer;">
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

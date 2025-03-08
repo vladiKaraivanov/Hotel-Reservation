@@ -1,0 +1,186 @@
+
+
+body{
+    background-color: #5a738e !important;
+}
+header {
+    /*header {*/
+    /*    background: linear-gradient(to right, #007bff, #00d4ff);*/
+    /*    padding: 10px 20px;*/
+    /*    text-align: center;*/
+    /*    box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
+    /*    color: white; !* Уверява се, че текстът ще бъде четим *!*/
+    /*header {*/
+        background: linear-gradient(to left, #5a738e, #dce1e8);
+        padding: 10px 20px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        color: #333; /* По-мек цвят на текста за по-добър контраст */
+    }
+
+    /*}*/
+
+    /*background-color: #f8f9fa;*/
+    /*padding: 10px 20px;*/
+    /*text-align: center;*/
+    /*box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
+
+
+.flex-box {
+    display: flex;
+    /*justify-content:flex-end;*/
+    justify-content: end;
+    padding-right: min(30px);
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.navbar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navbar-nav li, .logout-button{
+    display: inline !important;
+    margin-right: 30px !important;
+}
+
+
+.navbar-nav li a {
+    text-decoration: none;
+    color: #333;
+    background-color: #e7e7e7;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.logout-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+.logout-button {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: #333;
+    background-color: #e7e7e7;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+
+    font-size: inherit; /* Наследява размера на текста от родителя */
+    font-family: inherit; /* Наследява шрифта от родителя */
+    line-height: normal; /* Нормализира височината на текста */
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    /* Уеднаквяване на вертикалната подравненост */
+    align-items: center;
+    justify-content: center;
+    }
+
+
+
+.slideshow-container{
+    max-width: 300px;
+    height: 330px;
+    margin-left: min(50px);
+    margin-right: 15px;
+    margin-top: min(50px);
+    text-align: justify;
+    border-radius: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*background-color: #F8F9FA;*/
+    background-color: #9AA9BB;
+    color: #f2f2f2;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1);
+}
+.mySlides{
+    flex: 1 1 300px;
+}
+.slideshow{
+    position: relative;
+    width: 100%;
+}
+.slideshow .image{
+    /*display: block;*/
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    display: none;
+}
+.slideshow .image:first-child {
+    display: block; /* Показва първата снимка при зареждане на страницата */
+}
+.slideshow .prev, .slideshow .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.6s ease;
+    user-select: none;
+    background-color: rgba(0,0,0,0.2);
+}
+.slideshow .next {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.slideshow .prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.slideshow .prev:hover, .slideshow .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+.slideshow-container .mySlides .text{
+    display: block;
+    padding: 10px;
+}
+.description{
+    height: 100%;
+    display: block;
+    text-align: justify;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #f2f2f2;
+    /*color: #333333;*/
+}
+.view-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.view-more-button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    text-align: center;
+}
+
+.navbar-nav li a:hover, .logout-button:hover{
+    background-color: #ddd;
+    color: #000;
+}

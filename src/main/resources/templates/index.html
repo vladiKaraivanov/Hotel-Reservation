@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="~{fragments/commons :: head}">
+</head>
+<body>
+<header th:replace="~{fragments/commons :: header}">
+
+</header>
+<main>
+    <div class="slideshow-container">
+        <section class="mySlides hotel-one">
+            <div class="slideshow">
+                <img class="image" alt="" src="/images/hotels/hotel1/img01.webp">
+                <img class="image" alt="" src="/images/hotels/hotel1/img02.webp">
+                <img class="image" alt="" src="/images/hotels/hotel1/img03.webp">
+                <img class="image" alt="" src="/images/hotels/hotel1/img04.webp">
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+
+            <small class="text"> 4,5/5 Good </small>
+            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+                sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+                minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+                quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
+                fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
+                consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+                doloremque. Quaerat provident commodi consectetur veniam similique ad
+                earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
+                fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
+                suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+                modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
+                totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
+                quasi aliquam eligendi, placeat qui corporis!</p>
+            <a href="/hotels/hotel1-details" class="view-more-button">View More</a>
+        </section>
+        <!--    <section class="mySlides hotel two" >-->
+        <!--      <div class="slideshow">-->
+        <!--        <img class="image" alt="" src="/images/hotels/hotel2/img05.webp">-->
+        <!--        <img class="image" alt="" src="/images/hotels/hotel2/img06.webp">-->
+        <!--        <img class="image" alt="" src="/images/hotels/hotel2/img07.webp">-->
+        <!--        <img class="image" alt="" src="/images/hotels/hotel2/img08.webp">-->
+        <!--        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>-->
+        <!--        <a class="next" onclick="changeSlide(1)">&#10095;</a>-->
+        <!--      </div>-->
+
+        <!--      <small class="text"> 4,5/5 Good </small>-->
+        <!--      <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,-->
+        <!--        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum-->
+        <!--        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium-->
+        <!--        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis-->
+        <!--        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam-->
+        <!--        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,-->
+        <!--        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,-->
+        <!--        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos-->
+        <!--        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam-->
+        <!--        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis-->
+        <!--        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit-->
+        <!--        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur-->
+        <!--        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam-->
+        <!--        consequuntur! Commodi minima excepturi repudiandae velit hic maxime-->
+        <!--        doloremque. Quaerat provident commodi consectetur veniam similique ad-->
+        <!--        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo-->
+        <!--        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore-->
+        <!--        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium-->
+        <!--        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam-->
+        <!--        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam-->
+        <!--        quasi aliquam eligendi, placeat qui corporis!</p>-->
+        <!--    </section>-->
+    </div>
+</main>
+<footer>
+    <p>Contact Us: info@hotelreservation.com</p>
+    <p>Follow us on Social Media</p>
+    <a href="#"><i class="fa-brands fa-facebook"></i></a> | <a href="#">Twitter</a> | <a href="#">Instagram</a>
+</footer>
+<script src="/js/slideshow.js"></script>
+</body>
+</html>
