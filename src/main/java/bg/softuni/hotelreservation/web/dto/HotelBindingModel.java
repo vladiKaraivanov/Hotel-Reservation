@@ -2,6 +2,7 @@ package bg.softuni.hotelreservation.web.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 public class HotelBindingModel {
     @Size(min = 5, max = 50, message = "Hotel name must be at least 5 characters.")
@@ -12,6 +13,7 @@ public class HotelBindingModel {
     private String description;
     @Min(value = 1, message = "Rating must be min 1.")
     private Double rating;
+    private MultipartFile image;;
 
     public HotelBindingModel() {
     }
@@ -47,4 +49,13 @@ public class HotelBindingModel {
     public void setRating(Double rating) {
         this.rating = rating;
     }
+
+    public MultipartFile getImage() {
+        return image;
+    }
+
+    public void setImage(MultipartFile image) {
+        this.image = image;
+    }
+
 }

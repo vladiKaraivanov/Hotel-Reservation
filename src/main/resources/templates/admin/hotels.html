@@ -19,7 +19,6 @@
             <th>#</th>
             <th>Name</th>
             <th>Status</th>
-<!--            <th>Location</th>-->
             <th>Rooms</th>
             <th>Actions</th>
         </tr>
@@ -28,12 +27,11 @@
         <tr th:each="hotel, iterStat : ${hotels}">
             <td th:text="${iterStat.count}"></td>
             <td th:text="${hotel.name}"></td>
-
-<!--            <td th:text="${hotel.location}"></td>-->
-            <td th:text="${hotel.active}?'Active':'Inactive'" ></td>
+            <td th:text="${hotel.active} ? 'Active' : 'Inactive'"></td>
             <td th:text="${hotel.rooms.size()}"></td>
             <td>
                 <a th:href="@{/admin/hotels/edit/{id}(id=${hotel.id})}" class="btn btn-warning btn-sm">Edit</a>
+
                 <form th:action="@{/admin/hotels/changeStatus/{id}(id=${hotel.id})}" th:method="post" style="display:inline;">
                     <button type="submit"
                             th:classappend="${hotel.active} ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm'"
@@ -41,6 +39,10 @@
                             onclick="return confirm('Are you sure?');">
                     </button>
                 </form>
+
+                <!-- New Upload Image Button -->
+                <a th:href="@{/admin/hotels/{hotelId}/upload-image(hotelId=${hotel.id})}"
+                   class="btn btn-info btn-sm">Upload Image</a>
             </td>
         </tr>
         </tbody>

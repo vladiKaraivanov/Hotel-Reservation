@@ -1,11 +1,10 @@
 package bg.softuni.hotelreservation.room.model;
 
 import bg.softuni.hotelreservation.hotel.model.Hotel;
-import bg.softuni.hotelreservation.picture.model.Picture;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table
@@ -47,6 +46,7 @@ public class Room {
     public Hotel getHotelId() {
         return hotelId;
     }
+
 
     public void setHotelId(Hotel hotelId) {
         this.hotelId = hotelId;

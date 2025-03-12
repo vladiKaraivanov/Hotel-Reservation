@@ -2,15 +2,18 @@ package bg.softuni.hotelreservation.web.dto;
 
 import bg.softuni.hotelreservation.room.model.RoomTypeEnum;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
 public class RoomBindingModel {
-   private RoomTypeEnum roomType;
-
+    @NotNull(message = "Can not be empty.")
+    private RoomTypeEnum roomType;
+    @NotNull(message = "Can not be empty.")
     private int roomNumber;
-
+    @NotNull(message = "Can not be empty.")
     private BigDecimal pricePerNight;
+
 
     private Boolean available;
 

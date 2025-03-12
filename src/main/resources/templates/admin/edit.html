@@ -34,9 +34,12 @@
                    required>
         </div>
 
-        <button type="submit" class="btn btn-success">Save Hotel</button>
+        <a th:href="@{|/admin/hotels/${hotelView.id}/add-room|}" class="btn btn-secondary">View Rooms</a>
         <a href="/admin/hotels" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success">Save Hotel</button>
         <p></p>
+
+
     </form>
 
 </div>

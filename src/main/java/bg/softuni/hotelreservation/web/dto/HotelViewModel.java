@@ -1,6 +1,6 @@
 package bg.softuni.hotelreservation.web.dto;
 
-public class hotelViewModel {
+public class HotelViewModel {
     private String id;
 
     private String name;
@@ -11,7 +11,8 @@ public class hotelViewModel {
 
     private Double rating;
 
-    public hotelViewModel() {
+
+    public HotelViewModel() {
     }
 
     public String getId() {
@@ -53,4 +54,5 @@ public class hotelViewModel {
     public void setRating(Double rating) {
         this.rating = rating;
     }
+
 }

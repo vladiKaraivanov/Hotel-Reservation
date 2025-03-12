@@ -8,16 +8,16 @@
 
 <div class="container mt-5">
     <h2>Add Room to <span th:text="${hotelName}">Hotel</span></h2>
-    <form th:action="@{/admin/hotels/{hotelId}/add-room}" th:method="post" th:object="${roomBindingModel}">
 
-        <input type="hidden" th:value="${hotelId}" />
+    <form th:action="@{/admin/hotels/{hotelId}/add-room(hotelId=${hotelId})}" th:method="post" th:object="${roomBindingModel}">
+        <input type="hidden" th:field="${hotelId}" th:value="${hotelId}" />
+
         <div class="mb-3">
             <label for="type" class="form-label">Room Type</label>
             <select id="type" class="form-control" th:field="*{roomType}" required>
                 <option value="" disabled selected>Select room type</option>
                 <option th:each="t : ${T(bg.softuni.hotelreservation.room.model.RoomTypeEnum).values()}"
-                        th:value="${t}" th:text="${t.getDisplayName()}">
-                </option>
+                        th:value="${t}" th:text="${t.getDisplayName()}"></option>
             </select>
             <small th:if="${#fields.hasErrors('roomType')}" th:errors="*{roomType}" class="text-danger"></small>
         </div>
@@ -27,32 +27,65 @@
             <input type="number" id="pricePerNight" class="form-control" th:field="*{pricePerNight}" placeholder="Enter price per night" step="0.01" min="0" required>
             <small th:if="${#fields.hasErrors('pricePerNight')}" th:errors="*{pricePerNight}" class="text-danger"></small>
         </div>
+
         <div class="mb-3">
-            <label for="roomNumber" class="form-label">Room number</label>
+            <label for="roomNumber" class="form-label">Room Number</label>
             <input type="number" id="roomNumber" class="form-control" th:field="*{roomNumber}" placeholder="Enter number" step="1" min="0" required>
             <small th:if="${#fields.hasErrors('roomNumber')}" th:errors="*{roomNumber}" class="text-danger"></small>
         </div>
+
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="available" th:field="*{available}">
             <label class="form-check-label" for="available">Available</label>
         </div>
 
-
-
-        <!--        <div class="mb-3">-->
-        <!--            <label for="capacity" class="form-label">Capacity</label>-->
-        <!--            <input type="number" id="capacity" class="form-control" th:field="*{capacity}" placeholder="Enter room capacity" min="1" required>-->
-        <!--            <small th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}" class="text-danger"></small>-->
-        <!--        </div>-->
-
-        <!--        <div class="mb-3">-->
-        <!--            <label for="view" class="form-label">Room View</label>-->
-        <!--            <input type="text" id="view" class="form-control" th:field="*{view}" placeholder="Enter room view (optional)">-->
-        <!--        </div>-->
-
-        <button type="submit" class="btn btn-success">Add Room</button>
-        <a th:href="@{/admin/hotels/{id}(id=${hotelId})}" class="btn btn-secondary">Cancel</a>
+        <button th:href="@{/admin/hotels/{id}(id=${hotelId})}" type="submit" class="btn btn-success">Add Room § Stay</button>
+        <a href="/admin/hotels"  class="btn btn-secondary">Cancel</a>
     </form>
+
+    <hr>
+
+    <h3 class="mt-5">Rooms in <span th:text="${hotelName}">Hotel</span></h3>
+    <table class="table table-striped mt-3">
+        <thead>
+        <tr>
+            <th>Room Type</th>
+            <th>Price per Night</th>
+            <th>Room Number</th>
+            <th>Available</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room : ${rooms}">
+            <td th:text="${room.roomType.getDisplayName()}"></td>
+            <td th:text="${room.pricePerNight}"></td>
+            <td th:text="${room.roomNumber}"></td>
+<!--            <td>-->
+<!--                    <span th:text="${room.available} ? 'Yes' : 'No'"-->
+<!--                          th:classappend="${room.available} ? 'text-success' : 'text-danger'"></span>-->
+<!--            </td>-->
+            <td>
+                <a th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/available|}"
+                   class="btn btn-sm"
+                   th:classappend="${room.available} ? 'btn-success disabled' : 'btn-outline-success'">
+                    Available
+                </a>
+
+                <a th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/unavailable|}"
+                   class="btn btn-sm"
+                   th:classappend="${!room.available} ? 'btn-danger disabled' : 'btn-outline-danger'">
+                    Not Available
+                </a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(rooms)}">
+            <td colspan="4" class="text-center">No rooms added yet.</td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/admin/hotels}" class="btn btn-secondary">
+        Finish & Exit
+    </a>
 </div>
 
 <footer th:replace="~{fragments/commons::footer}"></footer>

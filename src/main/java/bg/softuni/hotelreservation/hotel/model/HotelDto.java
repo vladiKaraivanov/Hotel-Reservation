@@ -1,11 +1,5 @@
 package bg.softuni.hotelreservation.hotel.model;
 
-import bg.softuni.hotelreservation.picture.model.Picture;
-import bg.softuni.hotelreservation.room.model.Room;
-
-import java.util.List;
-import java.util.Set;
-
 public class HotelDto {
     private String id;
     private String name;

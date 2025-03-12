@@ -3,14 +3,11 @@ package bg.softuni.hotelreservation.hotel.service;
 import bg.softuni.hotelreservation.hotel.model.Hotel;
 import bg.softuni.hotelreservation.hotel.model.HotelDto;
 import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
-import bg.softuni.hotelreservation.web.dto.hotelViewModel;
 import bg.softuni.hotelreservation.web.dto.HotelBindingModel;
-import jakarta.validation.Valid;
+import bg.softuni.hotelreservation.web.dto.HotelViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -27,12 +24,12 @@ public class HotelService {
         return hotelRepository.findAll();
     }
 
-    public hotelViewModel findHotelById(String id) {
+    public HotelViewModel findHotelById(String id) {
         Hotel hotel = hotelRepository.findById(id).orElse(null);
         if (hotel == null) {
             return null;
         }
-        return modelMapper.map(hotelRepository.findById(id), hotelViewModel.class);
+        return modelMapper.map(hotelRepository.findById(id), HotelViewModel.class);
     }
 
     public void saveChanges(String id, HotelBindingModel hotelBindingModel) {
@@ -59,8 +56,8 @@ public class HotelService {
         hotel.setActive(true);
 //        hotel.setRooms(new HashSet<>());
 //        hotel.setPictures(new ArrayList<>());
-       Hotel newHotel = hotelRepository.save(hotel);
-        return newHotel.getId();
+        hotel = hotelRepository.save(hotel);
+        return hotel.getId();
 //        return (modelMapper.map(, HotelDto.class));
     }
 }

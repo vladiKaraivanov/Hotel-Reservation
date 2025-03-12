@@ -13,7 +13,7 @@ public class AuthenticationDetails implements UserDetails {
     private String username;
     private String password;
     private UserRoleEnum role;
-    private boolean isActive;    //TODO DROP TABLE AND CREATE NEW BASE WITH THIS PROPERTY!
+    private boolean isActive;
 
     public AuthenticationDetails() {
     }
