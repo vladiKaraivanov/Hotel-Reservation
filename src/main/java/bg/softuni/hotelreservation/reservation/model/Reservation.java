@@ -1,5 +1,6 @@
 package bg.softuni.hotelreservation.reservation.model;
 
+import bg.softuni.hotelreservation.hotel.model.Hotel;
 import bg.softuni.hotelreservation.room.model.Room;
 import bg.softuni.hotelreservation.user.model.User;
 import jakarta.persistence.*;
@@ -14,6 +15,8 @@ public class Reservation {
     private String id;
     @ManyToOne
     private User userId;
+    @OneToOne(mappedBy = "reservation")
+    private Hotel hotel;
     @ManyToOne
     private Room roomId;
     @Column(nullable = false)
@@ -40,6 +43,14 @@ public class Reservation {
 
     public void setUserId(User userId) {
         this.userId = userId;
+    }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     public Room getRoomId() {

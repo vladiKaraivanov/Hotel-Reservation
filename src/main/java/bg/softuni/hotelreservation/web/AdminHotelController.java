@@ -1,12 +1,8 @@
 package bg.softuni.hotelreservation.web;
 
-import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
 import bg.softuni.hotelreservation.hotel.service.HotelService;
-import bg.softuni.hotelreservation.image.repository.ImageRepository;
-import bg.softuni.hotelreservation.room.service.RoomService;
 import bg.softuni.hotelreservation.web.dto.HotelBindingModel;
 import bg.softuni.hotelreservation.web.dto.HotelViewModel;
-import com.cloudinary.Cloudinary;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -17,11 +13,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/admin/hotels")
-public class HotelController {
+public class AdminHotelController {
     private final HotelService hotelService;
 
 
-    public HotelController(HotelService hotelService) {
+    public AdminHotelController(HotelService hotelService) {
         this.hotelService = hotelService;
           }
 

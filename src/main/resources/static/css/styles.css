@@ -4,34 +4,29 @@ body{
     background-color: #5a738e !important;
 }
 header {
-    /*header {*/
-    /*    background: linear-gradient(to right, #007bff, #00d4ff);*/
-    /*    padding: 10px 20px;*/
-    /*    text-align: center;*/
-    /*    box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
-    /*    color: white; !* Уверява се, че текстът ще бъде четим *!*/
-    /*header {*/
-        background: linear-gradient(to left, #5a738e, #dce1e8);
-        padding: 10px 20px;
-        text-align: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        color: #333; /* По-мек цвят на текста за по-добър контраст */
-    }
-
-    /*}*/
-
-    /*background-color: #f8f9fa;*/
-    /*padding: 10px 20px;*/
-    /*text-align: center;*/
-    /*box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
+    background: linear-gradient(to left, #5a738e, #dce1e8);
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #333;
+    width: 100%; /* ✅ Гарантира, че хедърът заема цялата ширина */
+    display: flex; /* ✅ Подравнява вътрешните елементи */
+    justify-content: space-between; /* ✅ Разпределя съдържанието равномерно */
+    align-items: center; /* ✅ Центрира вертикално */
+    margin-bottom: 40px;
+}
 
 
+
+/* ✅ Гарантира, че навигацията се разпределя добре */
 .flex-box {
     display: flex;
-    /*justify-content:flex-end;*/
-    justify-content: end;
-    padding-right: min(30px);
+    justify-content: flex-end; /* ✅ Подравнява бутоните в дясно */
+    align-items: center;
+    gap: 20px; /* ✅ Добавя разстояние между бутоните */
+    padding-right: 30px;
 }
+
 
 header h1 {
     margin: 0;
@@ -43,9 +38,10 @@ header h1 {
     padding: 0;
 }
 
-.navbar-nav li, .logout-button{
-    display: inline !important;
-    margin-right: 30px !important;
+/* ✅ Коригира бутоните */
+.navbar-nav li, .logout-button {
+    margin: 0; /* ✅ Премахва ненужни отмествания */
+    padding: 0;
 }
 
 
@@ -57,6 +53,7 @@ header h1 {
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.3);
+    margin-right: 10px;
 }
 .logout-form {
     display: inline;
@@ -184,3 +181,140 @@ footer {
     background-color: #ddd;
     color: #000;
 }
+
+
+
+/* Нулиране на margin и padding за всички елементи */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Уверяваме се, че body не разтяга съдържанието */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 0;
+}
+
+/* Контейнерът на всички хотели */
+.hotels-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 20px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Карта за всеки хотел */
+.hotel-card {
+    background: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 15px !important;
+    width: 100% !important;
+}
+
+/* Секция за снимката на хотела */
+.hotel-image {
+    width: 100% !important;
+    height: 200px !important;
+    overflow: hidden !important;
+}
+
+.hotel-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;  /* Запазва правилното съотношение */
+    border-radius: 10px !important;
+}
+
+/* Информация за хотела */
+.hotel-info h3 {
+    margin: 10px 0 !important;
+    font-size: 1.4rem !important;
+}
+
+.hotel-info p {
+    font-size: 0.9rem !important;
+    color: #666 !important;
+}
+
+/* Бутон за "View More" */
+.view-more-button {
+    display: inline-block !important;
+    margin-top: 10px !important;
+    padding: 8px 12px !important;
+    background: #007BFF !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 5px !important;
+    transition: background 0.3s !important;
+}
+
+.view-more-button:hover {
+    background: #0056b3 !important;
+}
+
+
+
+
+.hotel-details-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.image-gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.reservation-form {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+}
+
+.reservation-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.reservation-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.reserve-button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reserve-button:hover {
+    background-color: #0056b3;
+}
+

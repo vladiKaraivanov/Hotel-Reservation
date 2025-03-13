@@ -1,23 +1,34 @@
 package bg.softuni.hotelreservation.hotel.service;
 
 import bg.softuni.hotelreservation.hotel.model.Hotel;
-import bg.softuni.hotelreservation.hotel.model.HotelDto;
 import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
+import bg.softuni.hotelreservation.reservation.model.Reservation;
+import bg.softuni.hotelreservation.reservation.repository.ReservationRepository;
+import bg.softuni.hotelreservation.reservation.service.ReservationService;
+import bg.softuni.hotelreservation.user.model.User;
+import bg.softuni.hotelreservation.user.repository.UserRepository;
 import bg.softuni.hotelreservation.web.dto.HotelBindingModel;
+import bg.softuni.hotelreservation.web.dto.HotelDetailsViewModel;
 import bg.softuni.hotelreservation.web.dto.HotelViewModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HotelService {
     private final HotelRepository hotelRepository;
+    private final ReservationRepository reservationRepository;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
-    public HotelService(HotelRepository hotelRepository, ModelMapper modelMapper) {
+    public HotelService(HotelRepository hotelRepository, ReservationRepository reservationRepository, ModelMapper modelMapper, UserRepository userRepository) {
         this.hotelRepository = hotelRepository;
+        this.reservationRepository = reservationRepository;
         this.modelMapper = modelMapper;
+        this.userRepository = userRepository;
     }
 
     public List<Hotel> getAllHotels() {
@@ -49,7 +60,7 @@ public class HotelService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid hotel ID"));
         hotel.setActive(!hotel.isActive());
         hotelRepository.save(hotel);
-        }
+    }
 
     public String addNewHotel(HotelBindingModel hotelBindingModel) {
         Hotel hotel = modelMapper.map(hotelBindingModel, Hotel.class);
@@ -59,6 +70,28 @@ public class HotelService {
         hotel = hotelRepository.save(hotel);
         return hotel.getId();
 //        return (modelMapper.map(, HotelDto.class));
+    }
+
+    public HotelDetailsViewModel getHotelDetails(String id) {
+        Hotel hotel = hotelRepository.findById(id).orElseThrow(null);
+        if (hotel == null) {
+            return null;
+        }
+        return (modelMapper.map(hotel, HotelDetailsViewModel.class));
+    }
+
+    public void createReservation(String hotelId, String username, LocalDate checkInDate, LocalDate checkOutDate) {
+        Hotel hotel = hotelRepository.findById(hotelId)
+                .orElseThrow(() -> new RuntimeException("Hotel not found"));
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Reservation reservation = new Reservation();
+        reservation.setHotel(hotel);
+        reservation.setUserId(user);
+        reservation.setCheckInDate(checkInDate);
+        reservation.setCheckOutDate(checkOutDate);
+
+        reservationRepository.save(reservation);
     }
 }
 
