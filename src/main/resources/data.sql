@@ -1,15 +1,35 @@
 -- SET FOREIGN_KEY_CHECKS=0
 INSERT INTO hotel (id, name, address, description, rating, active)
-VALUES (UUID(), 'Hotel Sunrise', '123 Beach Blvd', 'A beautiful beachfront hotel.', 4.5, true),
-       (UUID(), 'Mountain View Resort', '456 Mountain Rd', 'Enjoy a stunning mountain view.', 4.8, true),
-       (UUID(), 'Urban Hotel Central', '789 Downtown Ave', 'Perfect location in the heart of the city.', 4.3, true),
-       (UUID(), 'Country Side Hotel', '101 Country Road', 'Experience the peace and quiet of the countryside.', 4.7, true),
-       (UUID(), 'Lakeside Inn', '234 Lake Rd', 'Serene lakeside retreat for nature lovers.', 4.9, true),
-       (UUID(), 'Grand Heritage Hotel', '345 Royal Blvd', 'Luxurious heritage in the historical district.', 4.6, true),
-       (UUID(), 'Airport Gateway Hotel', '567 Airport Rd', 'Convenient and cozy stay near the airport.', 4.2, true),
-       (UUID(), 'Coastline Bungalow', '678 Coastal Rd', 'Beautiful views of the ocean.', 4.4, true),
-       (UUID(), 'Sky High Hotel', '890 Metropolitan St', 'Stay above the clouds in the city’s tallest building.', 4.8, true),
-       (UUID(), 'Health Resort', '901 Wellness Blvd', 'Rejuvenate at our full-service health resort.', 4.7, true);
+VALUES
+    (UUID(), 'Hotel Sunrise', '123 Beach Blvd',
+     'Nestled on the golden sands of the coastline, Hotel Sunrise offers breathtaking ocean views and the soothing sound of waves. Wake up to mesmerizing sunrises, enjoy fresh seafood at our beachfront restaurant, and unwind with a cocktail as the sun sets over the horizon.', 4.5, true),
+
+    (UUID(), 'Mountain View Resort', '456 Mountain Rd',
+     'Perched amidst towering peaks, Mountain View Resort is a haven for nature lovers and adventure seekers. Breathe in the crisp mountain air, explore scenic hiking trails, and relax by the fireplace in our cozy lodge. An escape to tranquility awaits you.', 4.8, true),
+
+    (UUID(), 'Urban Hotel Central', '789 Downtown Ave',
+     'Located in the vibrant heart of the city, Urban Hotel Central puts you just steps away from the best restaurants, shopping, and nightlife. With modern rooms, a rooftop bar, and easy access to cultural landmarks, it’s the perfect place for both business and leisure travelers.', 4.3, true),
+
+    (UUID(), 'Country Side Hotel', '101 Country Road',
+     'Surrounded by rolling green fields and charming farmsteads, Country Side Hotel offers a peaceful retreat from the hustle and bustle of city life. Enjoy fresh organic breakfasts, long countryside walks, and the warm hospitality of a cozy, rustic setting.', 4.7, true),
+
+    (UUID(), 'Lakeside Inn', '234 Lake Rd',
+     'Tucked away on the edge of a crystal-clear lake, Lakeside Inn is the ultimate getaway for nature lovers and fishing enthusiasts. Enjoy tranquil mornings on a kayak, evenings by the bonfire, and comfortable rooms that offer stunning water views.', 4.9, true),
+
+    (UUID(), 'Grand Heritage Hotel', '345 Royal Blvd',
+     'Step into a world of timeless elegance at Grand Heritage Hotel, where history and luxury meet. Located in a historic district, this hotel features opulent decor, antique furnishings, and a grand ballroom. Indulge in gourmet dining and experience the charm of a bygone era.', 4.6, true),
+
+    (UUID(), 'Airport Gateway Hotel', '567 Airport Rd',
+     'Designed for travelers on the go, Airport Gateway Hotel offers modern comfort just minutes from the airport. Enjoy soundproofed rooms, express check-in services, and a 24/7 café to make your journey seamless and stress-free.', 4.2, true),
+
+    (UUID(), 'Coastline Bungalow', '678 Coastal Rd',
+     'A hidden paradise by the ocean, Coastline Bungalow offers private villas with panoramic sea views. Wake up to the gentle sea breeze, lounge on your private terrace, and soak in the tropical serenity of an idyllic beachfront escape.', 4.4, true),
+
+    (UUID(), 'Sky High Hotel', '890 Metropolitan St',
+     'Rising above the city skyline, Sky High Hotel offers breathtaking panoramic views from every room. Experience luxury in the clouds with a rooftop infinity pool, world-class dining, and a sky lounge that lets you see the city from a whole new perspective.', 4.8, true),
+
+    (UUID(), 'Health Resort', '901 Wellness Blvd',
+     'Immerse yourself in relaxation and rejuvenation at Health Resort. With holistic spa treatments, yoga retreats, and fresh organic cuisine, our wellness sanctuary is designed to nourish both body and mind. Escape the stress and embrace serenity.', 4.7, true);
 
 
 

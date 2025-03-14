@@ -52,7 +52,7 @@
             <th>Room Type</th>
             <th>Price per Night</th>
             <th>Room Number</th>
-            <th>Available</th>
+            <th>Change Room Status</th>
         </tr>
         </thead>
         <tbody>
@@ -60,18 +60,15 @@
             <td th:text="${room.roomType.getDisplayName()}"></td>
             <td th:text="${room.pricePerNight}"></td>
             <td th:text="${room.roomNumber}"></td>
-<!--            <td>-->
-<!--                    <span th:text="${room.available} ? 'Yes' : 'No'"-->
-<!--                          th:classappend="${room.available} ? 'text-success' : 'text-danger'"></span>-->
-<!--            </td>-->
+
             <td>
-                <a th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/available|}"
+                <a th:unless="${room.available}" th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/available|}"
                    class="btn btn-sm"
                    th:classappend="${room.available} ? 'btn-success disabled' : 'btn-outline-success'">
                     Available
                 </a>
 
-                <a th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/unavailable|}"
+                <a th:if="${room.available}" th:href="@{|/admin/hotels/${hotelId}/rooms/${room.id}/unavailable|}"
                    class="btn btn-sm"
                    th:classappend="${!room.available} ? 'btn-danger disabled' : 'btn-outline-danger'">
                     Not Available

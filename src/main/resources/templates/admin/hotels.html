@@ -27,7 +27,7 @@
         <tr th:each="hotel, iterStat : ${hotels}">
             <td th:text="${iterStat.count}"></td>
             <td th:text="${hotel.name}"></td>
-            <td th:text="${hotel.active} ? 'Active' : 'Inactive'"></td>
+            <td th:text="${hotel.active} ? 'Available' : 'Not available'"></td>
             <td th:text="${hotel.rooms.size()}"></td>
             <td>
                 <a th:href="@{/admin/hotels/edit/{id}(id=${hotel.id})}" class="btn btn-warning btn-sm">Edit</a>
@@ -35,7 +35,7 @@
                 <form th:action="@{/admin/hotels/changeStatus/{id}(id=${hotel.id})}" th:method="post" style="display:inline;">
                     <button type="submit"
                             th:classappend="${hotel.active} ? 'btn btn-danger btn-sm' : 'btn btn-success btn-sm'"
-                            th:text="${hotel.active} ? 'Delete' : 'Activate'"
+                            th:text="${hotel.active} ? 'Not available' : 'Available'"
                             onclick="return confirm('Are you sure?');">
                     </button>
                 </form>
