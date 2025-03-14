@@ -28,7 +28,7 @@ public class Hotel {
     private Reservation reservation;
     @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Image> images;
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "hotelId")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "hotel")
     private Set<Room> rooms;
 
     public Hotel() {

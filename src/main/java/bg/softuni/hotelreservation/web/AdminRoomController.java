@@ -19,16 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin/")
-public class RoomController {
+public class AdminRoomController {
 private final RoomService roomService;
 private final HotelService hotelService;
 private final ModelMapper modelMapper;
 
-    public RoomController(RoomService roomService, HotelService hotelService, ModelMapper modelMapper) {
+    public AdminRoomController(RoomService roomService, HotelService hotelService, ModelMapper modelMapper) {
         this.roomService = roomService;
         this.hotelService = hotelService;
         this.modelMapper = modelMapper;

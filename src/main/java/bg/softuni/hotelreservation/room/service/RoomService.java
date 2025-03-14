@@ -5,9 +5,7 @@ import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
 import bg.softuni.hotelreservation.room.model.Room;
 import bg.softuni.hotelreservation.room.repository.RoomRepository;
 import bg.softuni.hotelreservation.web.dto.RoomBindingModel;
-import bg.softuni.hotelreservation.web.dto.RoomViewModel;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +30,7 @@ public class RoomService {
         Optional<Hotel> hotel = hotelRepository.findById(hotelId);
         List<Room> rooms = new ArrayList<>();
         if (hotel.isPresent()) {
-            rooms = roomRepository.findRoomByHotelId_Id(hotel.get().getId());
+            rooms = roomRepository.findRoomByHotel_Id(hotel.get().getId());
         }
         return rooms;
     }
@@ -40,7 +38,7 @@ public class RoomService {
     public void addRoom(RoomBindingModel roomBindingModel, String hotelId) {
         Room room = modelMapper.map(roomBindingModel, Room.class);
         if(hotelRepository.findById(hotelId).isPresent()) {
-            room.setHotelId(hotelRepository.findById(hotelId).get());
+            room.setHotel(hotelRepository.findById(hotelId).get());
         }
         roomRepository.save(room);
     }
@@ -50,5 +48,16 @@ public class RoomService {
                 .orElseThrow(() -> new EntityNotFoundException("Room not found"));
         room.setAvailable(availability);
         roomRepository.save(room);
+    }
+
+    public List<Room> findByHotelIdAndReservedFalse(String id) {
+        List<Room> rooms = roomRepository.findFreeRoomsByHotelId(id);
+        rooms = rooms.stream().filter(Room::getAvailable).toList();
+        return rooms;
+    }
+
+    public List<Room> findByHotelIdAndReservedTrue(String id) {
+        return roomRepository.findReservedRoomsByHotelId(id);
+
     }
 }

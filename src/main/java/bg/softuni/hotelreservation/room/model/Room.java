@@ -4,7 +4,6 @@ import bg.softuni.hotelreservation.hotel.model.Hotel;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 @Entity
 @Table
@@ -14,15 +13,17 @@ public class Room {
     private String id;
     @ManyToOne
     @JoinColumn(name = "hotel_id")
-    private Hotel hotelId;
+    private Hotel hotel;
     @Enumerated(EnumType.STRING)
     private RoomTypeEnum roomType;
-    @Column
+    @Column()
     private int roomNumber;
     @Column(nullable = false)
     private BigDecimal pricePerNight;
     @Column()
     private Boolean available;
+    @Column()
+    private Boolean reserved;
 
     public Room() {
     }
@@ -43,13 +44,13 @@ public class Room {
         this.id = id;
     }
 
-    public Hotel getHotelId() {
-        return hotelId;
+    public Hotel getHotel() {
+        return hotel;
     }
 
 
-    public void setHotelId(Hotel hotelId) {
-        this.hotelId = hotelId;
+    public void setHotel(Hotel hotelId) {
+        this.hotel = hotelId;
     }
 
     public RoomTypeEnum getRoomType() {
@@ -76,4 +77,11 @@ public class Room {
         this.available = available;
     }
 
+    public Boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(Boolean reserved) {
+        this.reserved = reserved;
+    }
 }
