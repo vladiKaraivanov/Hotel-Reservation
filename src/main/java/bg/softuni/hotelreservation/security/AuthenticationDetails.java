@@ -7,9 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 public class AuthenticationDetails implements UserDetails {
-    private String id;
+    private UUID id;
     private String username;
     private String password;
     private UserRoleEnum role;
@@ -18,7 +19,7 @@ public class AuthenticationDetails implements UserDetails {
     public AuthenticationDetails() {
     }
 
-    public AuthenticationDetails(String id, String username, String password, UserRoleEnum role, boolean isActive) {
+    public AuthenticationDetails(UUID id, String username, String password, UserRoleEnum role, boolean isActive) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -26,14 +27,13 @@ public class AuthenticationDetails implements UserDetails {
         this.isActive = isActive;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }

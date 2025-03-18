@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons :: head}">
+    <title>Login Page</title>
+</head>
+<body>
+<header th:replace="~{fragments/commons :: header}"></header>
+
+
+<main class="hotel-details-container">
+<!--    <form th:object="${hotel}" th:action="@{/hotels/{id}/details}" method="post"></form>-->
+    <h1  th:text="${hotel.name}">Hotel Name</h1>
+    <p th:text="${hotel.address}">Hotel Address</p>
+    <p th:text="${hotel.description}">Hotel Description</p>
+    <!-- Галерия с всички снимки на хотела -->
+    <div class="image-gallery">
+        <img th:each="image : ${hotel.images}"
+             th:src="${image.imageUrl}"
+             alt="Hotel Image"
+             class="clickable-image"
+             onclick="openLightbox(this)">
+    </div>
+
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-image" class="lightbox-content">
+    </div>
+
+    <div class="hotel-rooms">
+        <h3 th:text="'Free Rooms: ' + ${#lists.size(freeRooms)}">Free Rooms</h3>
+        <ul>
+            <li th:each="entry : ${freeRoomsCountByType}">
+                <span th:text="${entry.key}"></span>:
+                <span th:text="${entry.value}"></span>
+            </li>
+        </ul>
+    </div>
+    <h3 th:text="'Reserved Rooms: ' + ${#lists.size(reservedRooms)}">Reserved Rooms</h3>
+
+<!--    <div class="hotel-rooms">-->
+<!--        <p th:text="'Free Rooms: ' + ${#lists.size(freeRooms)}">Free Rooms</p>-->
+
+<!--        <p th:text="'Reserved Rooms: ' + ${#lists.size(reservedRooms)}">Reserved Rooms</p>-->
+<!--    </div>-->
+
+
+    <!-- Форма за резервация -->
+    <div class="reservation-form">
+        <h2>Make a Reservation</h2>
+        <form th:action="@{/hotels/{id}/reserve(id=${hotel.id})}" method="post">
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate" required>
+
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+            <button type="submit" class="reserve-button">Reserve Now</button>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/commons :: footer}"></footer>
+<script>
+    function openLightbox(img) {
+        document.getElementById("lightbox-image").src = img.src;
+        document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function closeLightbox() {
+        document.getElementById("lightbox").style.display = "none";
+    }
+</script>
+
+</body>
+</html>

@@ -6,13 +6,14 @@ import bg.softuni.hotelreservation.user.model.User;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @ManyToOne
     private User userId;
     @OneToOne(mappedBy = "reservation")
@@ -29,11 +30,11 @@ public class Reservation {
     public Reservation() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin/")
@@ -35,7 +36,7 @@ private final ModelMapper modelMapper;
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/hotels/{hotelId}/add-room")
-    public String showAddRoomForm(@PathVariable String hotelId, Model model) {
+    public String showAddRoomForm(@PathVariable UUID hotelId, Model model) {
 
         HotelViewModel hotel = hotelService.findHotelById(hotelId);
         model.addAttribute("hotelName", hotel.getName());
@@ -48,7 +49,7 @@ private final ModelMapper modelMapper;
     }
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/hotels/{hotelId}/add-room")
-    public String addRoom(@PathVariable String hotelId, @Valid RoomBindingModel roomBindingModel,
+    public String addRoom(@PathVariable UUID hotelId, @Valid RoomBindingModel roomBindingModel,
                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("roomBindingModel", roomBindingModel);
@@ -59,15 +60,15 @@ private final ModelMapper modelMapper;
         return "redirect:/admin/hotels/" + hotelId + "/add-room";
     }
     @GetMapping("/hotels/{hotelId}/rooms/{roomId}/available")
-    public String makeAvailable(@PathVariable("hotelId") String hotelId,
-                                @PathVariable("roomId") String roomId) {
+    public String makeAvailable(@PathVariable("hotelId") UUID hotelId,
+                                @PathVariable("roomId") UUID roomId) {
         roomService.setAvailability(roomId, true);
         return "redirect:/admin/hotels/" + hotelId + "/add-room";
     }
 
     @GetMapping("/hotels/{hotelId}/rooms/{roomId}/unavailable")
-    public String makeUnavailable(@PathVariable("hotelId") String hotelId,
-                                  @PathVariable("roomId") String roomId) {
+    public String makeUnavailable(@PathVariable("hotelId") UUID hotelId,
+                                  @PathVariable("roomId") UUID roomId) {
         roomService.setAvailability(roomId, false);
         return "redirect:/admin/hotels/" + hotelId + "/add-room";
     }

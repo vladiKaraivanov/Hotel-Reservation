@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +27,7 @@ public class RoomService {
         this.modelMapper = modelMapper;
     }
 
-    public List<Room> findAllRoomInHotel(String hotelId) {
+    public List<Room> findAllRoomInHotel(UUID hotelId) {
         Optional<Hotel> hotel = hotelRepository.findById(hotelId);
         List<Room> rooms = new ArrayList<>();
         if (hotel.isPresent()) {
@@ -35,7 +36,7 @@ public class RoomService {
         return rooms;
     }
 
-    public void addRoom(RoomBindingModel roomBindingModel, String hotelId) {
+    public void addRoom(RoomBindingModel roomBindingModel, UUID hotelId) {
         Room room = modelMapper.map(roomBindingModel, Room.class);
         if(hotelRepository.findById(hotelId).isPresent()) {
             room.setHotel(hotelRepository.findById(hotelId).get());
@@ -43,20 +44,20 @@ public class RoomService {
         roomRepository.save(room);
     }
 
-    public void setAvailability(String roomId, boolean availability) {
+    public void setAvailability(UUID roomId, boolean availability) {
         Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new EntityNotFoundException("Room not found"));
         room.setAvailable(availability);
         roomRepository.save(room);
     }
 
-    public List<Room> findByHotelIdAndReservedFalse(String id) {
+    public List<Room> findByHotelIdAndReservedFalse(UUID id) {
         List<Room> rooms = roomRepository.findFreeRoomsByHotelId(id);
         rooms = rooms.stream().filter(Room::getAvailable).toList();
         return rooms;
     }
 
-    public List<Room> findByHotelIdAndReservedTrue(String id) {
+    public List<Room> findByHotelIdAndReservedTrue(UUID id) {
         return roomRepository.findReservedRoomsByHotelId(id);
 
     }

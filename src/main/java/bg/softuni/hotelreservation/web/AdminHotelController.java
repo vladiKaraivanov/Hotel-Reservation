@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/admin/hotels")
 public class AdminHotelController {
@@ -23,7 +25,7 @@ public class AdminHotelController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/edit/{id}")
-    public String editHotel(@PathVariable("id") String id, Model model) {
+    public String editHotel(@PathVariable("id") UUID id, Model model) {
         if (hotelService.findHotelById(id) != null) {
             HotelViewModel hotelViewModel = hotelService.findHotelById(id);
             model.addAttribute("hotelView", hotelViewModel);
@@ -35,7 +37,7 @@ public class AdminHotelController {
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/edit/{id}")
     public String saveChanges(@Valid HotelBindingModel hotelBindingModel, BindingResult bindingResult,
-                              RedirectAttributes redirectAttributes, @PathVariable String id) {
+                              RedirectAttributes redirectAttributes, @PathVariable UUID id) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("errors", bindingResult);
             return "redirect:/admin/hotels/edit/" + id;
@@ -46,7 +48,7 @@ public class AdminHotelController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/changeStatus/{id}")
-    public String deleteOrActivateHotel(@PathVariable String id) {
+    public String deleteOrActivateHotel(@PathVariable UUID id) {
         hotelService.deleteActivateHotelById(id);
         return "redirect:/admin/hotels";
     }
@@ -67,7 +69,7 @@ public class AdminHotelController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.hotelBindingModel", bindingResult);
             return "admin/add-hotel";
         }
-        String hotelId = hotelService.addNewHotel(hotelBindingModel);
+        UUID hotelId = hotelService.addNewHotel(hotelBindingModel);
 
         if (hotelId == null) {
             redirectAttributes.addFlashAttribute("error", "Failed to save hotel. Please try again.");

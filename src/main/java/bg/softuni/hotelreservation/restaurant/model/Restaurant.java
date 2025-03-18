@@ -4,13 +4,14 @@ import bg.softuni.hotelreservation.hotel.model.Hotel;
 import jakarta.persistence.*;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @OneToOne
     private Menu menu;
     @Enumerated(EnumType.STRING)
@@ -21,12 +22,20 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Set<Hotel> getClosestHotel() {
+        return closestHotel;
+    }
+
+    public void setClosestHotel(Set<Hotel> closestHotel) {
+        this.closestHotel = closestHotel;
     }
 
     public Menu getMenu() {

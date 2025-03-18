@@ -4,13 +4,14 @@ import bg.softuni.hotelreservation.hotel.model.Hotel;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @Table
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
@@ -36,11 +37,11 @@ public class Room {
         this.roomNumber = roomNumber;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -48,9 +49,8 @@ public class Room {
         return hotel;
     }
 
-
-    public void setHotel(Hotel hotelId) {
-        this.hotel = hotelId;
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
     }
 
     public RoomTypeEnum getRoomType() {
@@ -84,4 +84,5 @@ public class Room {
     public void setReserved(Boolean reserved) {
         this.reserved = reserved;
     }
+
 }

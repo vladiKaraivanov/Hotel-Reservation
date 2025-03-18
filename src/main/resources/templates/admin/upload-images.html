@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons :: head}">
+  <title>Upload Hotel Image</title>
+</head>
+<body>
+<header th:replace="~{fragments/commons::header}"></header>
+
+<div class="container mt-5">
+  <h2>Upload Image for <span th:text="${hotel.name}"></span></h2>
+
+  <form th:action="@{|/admin/hotels/${hotel.id}/upload-image|}"
+        method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="image" class="form-label">Choose an image</label>
+      <input type="file" id="image" name="image" class="form-control" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Upload</button>
+    <a href="/admin/hotels" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+</body>
+</html>

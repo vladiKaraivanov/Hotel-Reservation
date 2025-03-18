@@ -3,24 +3,25 @@ package bg.softuni.hotelreservation.restaurant.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER)
     private List<MenuItem> menuItems;
 
     public Menu() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

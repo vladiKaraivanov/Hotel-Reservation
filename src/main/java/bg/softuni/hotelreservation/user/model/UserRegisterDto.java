@@ -1,18 +1,20 @@
 package bg.softuni.hotelreservation.user.model;
 
+import java.util.UUID;
+
 public class UserRegisterDto {
-    private String id;
+    private UUID id;
     private String username;
     private String email;
 
     public UserRegisterDto() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

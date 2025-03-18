@@ -7,8 +7,8 @@ spring:
     username: root
     password: 1234
 
-  #  thymeleaf:
-  #    cache: false
+    thymeleaf:
+      cache: false
 
   servlet:
     multipart:

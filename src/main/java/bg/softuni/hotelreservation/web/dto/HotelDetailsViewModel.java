@@ -1,20 +1,29 @@
 package bg.softuni.hotelreservation.web.dto;
 
+import bg.softuni.hotelreservation.image.model.Image;
+import bg.softuni.hotelreservation.room.model.Room;
+
+import java.util.List;
 import java.util.UUID;
 
-public class HotelViewModel {
+public class HotelDetailsViewModel {
     private UUID id;
-
     private String name;
-
     private String address;
-
     private String description;
+    private List<Room> rooms;
 
-    private Double rating;
+    public List<Room> getRooms() {
+        return rooms;
+    }
 
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
 
-    public HotelViewModel() {
+    private List<Image> images;
+
+    public HotelDetailsViewModel() {
     }
 
     public UUID getId() {
@@ -49,12 +58,11 @@ public class HotelViewModel {
         this.description = description;
     }
 
-    public Double getRating() {
-        return rating;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
-
 }

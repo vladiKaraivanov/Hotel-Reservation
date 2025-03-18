@@ -1,7 +1,9 @@
 package bg.softuni.hotelreservation.hotel.model;
 
+import java.util.UUID;
+
 public class HotelDto {
-    private String id;
+    private UUID id;
     private String name;
     private String address;
     private String description;
@@ -13,11 +15,11 @@ public class HotelDto {
     public HotelDto() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

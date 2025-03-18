@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons :: head}">
+  <title>Room Administration</title>
+</head>
+<body>
+<header th:replace="~{fragments/commons::header}"></header>
+
+<div class="container mt-5">
+
+  <h2>Room Administration</h2>
+
+  <table class="table table-striped mt-4">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Hotel Name</th>
+      <th>Total Rooms</th>
+<!--      <th>Available Rooms</th>-->
+<!--      <th>Unavailable Rooms</th>-->
+      <th>Manage Rooms</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="hotel, iterStat : ${hotels}">
+      <td th:text="${iterStat.count}"></td>
+      <td th:text="${hotel.name}"></td>
+      <td th:text="${#lists.size(hotel.rooms)}"></td>
+      <td>
+        <a th:href="@{|/admin/hotels/${hotel.id}/add-room|}" class="btn btn-primary btn-sm">Manage</a>
+      </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(hotels)}">
+      <td colspan="6" class="text-center">No hotels available.</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<footer th:replace="~{fragments/commons::footer}"></footer>
+</body>
+</html>

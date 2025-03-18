@@ -3,12 +3,14 @@ package bg.softuni.hotelreservation.image.model;
 import bg.softuni.hotelreservation.hotel.model.Hotel;
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(nullable = true)
     private String imageUrl;
     @ManyToOne(fetch = FetchType.EAGER)
@@ -17,11 +19,11 @@ public class Image {
     public Image() {
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
