@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="bg" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons :: head}"></head>
+<body>
+<header th:replace="~{fragments/commons::header}"></header>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Admin Panel - Users</h2>
+
+    <div class="row">
+        <!-- Секция със списък на потребителите -->
+        <div class="col-md-4">
+            <h4>User List</h4>
+            <ul class="list-group">
+                <li th:each="user : ${userViewModels}">
+                    <a th:href="@{/admin/manage/users(username=${user.username})}"
+                       th:text="${user.username}"
+                       class="list-group-item cursor-pointer">
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Секция за редактиране на потребител -->
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">Manage User</div>
+                <div class="card-body">
+                    <form th:action="@{/admin/manage/users}" method="post" th:object="${manageUser}">
+                        <input type="hidden" th:field="*{id}">
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="username" th:field="*{username}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="birthday" class="form-label">Birthday:</label>
+                            <input type="date" class="form-control" id="birthday" th:field="*{birthday}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label">Role:</label>
+                            <select class="form-select" id="role" th:field="*{role}">
+                                <option value="USER">USER</option>
+                                <option value="ADMIN">ADMIN</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="active" class="form-label">Status:</label>
+                            <select class="form-select" id="active" th:field="*{active}">
+                                <option value="true">Active</option>
+                                <option value="false">Inactive</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-success">Save</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<script>-->
+<!--    document.addEventListener("DOMContentLoaded", function () {-->
+<!--        document.querySelectorAll(".user-item").forEach(item => {-->
+<!--            item.addEventListener("click", function () {-->
+<!--                document.getElementById("id").value = this.dataset.id;-->
+<!--                document.getElementById("username").value = this.textContent;-->
+<!--                document.getElementById("firstName").value = this.dataset.firstname;-->
+<!--                document.getElementById("lastName").value = this.dataset.lastname;-->
+<!--                document.getElementById("birthday").value = this.dataset.birthday;-->
+<!--                document.getElementById("email").value = this.dataset.email;-->
+<!--                document.getElementById("role").value = this.dataset.role;-->
+<!--                document.getElementById("active").value = this.dataset.active;-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+</body>
+</html>

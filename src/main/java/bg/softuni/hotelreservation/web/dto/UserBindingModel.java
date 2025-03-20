@@ -1,50 +1,43 @@
-package bg.softuni.hotelreservation.user.model;
+package bg.softuni.hotelreservation.web.dto;
 
-import jakarta.persistence.*;
+import bg.softuni.hotelreservation.user.model.UserRoleEnum;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
 
-@Entity
-@Table
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+public class UserBindingModel {
     private UUID id;
-    @Column(unique = true, nullable = false)
     private String username;
-    @Column(name = "first_name", length = 20)
+    @Size(max = 20)
     private String firstName;
-    @Column(name = "last_name",  length = 20)
+    @Size(max = 20)
     private String lastName;
-    @Column
-    private LocalDate birthday;
-    @Column(unique = true, nullable = false)
-    private String email;
-    @Column(nullable = false)
-    private String password;
-    @Enumerated(EnumType.STRING)
-    private UserRoleEnum role;
-    @Column
-    private Boolean active;
-    @ElementCollection
-    private List<String> interests;
 
-    public User() {
+    private LocalDate birthday;
+    @Email
+    private String email;
+    @Size(min = 3)
+    private String password;
+
+    private UserRoleEnum role;
+
+    private Boolean active;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public UserBindingModel() {
     }
 
     public UUID getId() {
         return id;
     }
 
-
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public void setUsername(String username) {
@@ -65,6 +58,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public String getEmail() {
@@ -97,21 +98,5 @@ public class User {
 
     public void setActive(Boolean active) {
         this.active = active;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
-
-    public List<String> getInterests() {
-        return interests;
-    }
-
-    public void setInterests(List<String> interests) {
-        this.interests = interests;
     }
 }
