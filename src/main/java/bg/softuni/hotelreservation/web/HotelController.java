@@ -5,6 +5,7 @@ import bg.softuni.hotelreservation.room.model.Room;
 import bg.softuni.hotelreservation.room.model.RoomTypeEnum;
 import bg.softuni.hotelreservation.room.service.RoomService;
 import bg.softuni.hotelreservation.web.dto.HotelDetailsViewModel;
+import bg.softuni.hotelreservation.web.dto.ReviewBindingModel;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -39,11 +40,15 @@ public class HotelController {
         Map<RoomTypeEnum, Long> freeRoomsCountByType = freeRooms.stream()
                 .collect(Collectors.groupingBy(Room::getRoomType, Collectors.counting()));
 
+        ReviewBindingModel reviewBindingModel = new ReviewBindingModel();
+        reviewBindingModel.setHotelID(hotel.getId());
+        model.addAttribute("reviewBinding", reviewBindingModel);
+
         model.addAttribute("hotel", hotel);
         model.addAttribute("freeRooms", freeRooms);
         model.addAttribute("freeRoomsCountByType", freeRoomsCountByType);
         model.addAttribute("reservedRooms", reservedRooms);
-//        }
+
         return "hotels/hotel-details";
     }
 

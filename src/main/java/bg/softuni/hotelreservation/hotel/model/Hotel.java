@@ -2,6 +2,7 @@ package bg.softuni.hotelreservation.hotel.model;
 
 import bg.softuni.hotelreservation.image.model.Image;
 import bg.softuni.hotelreservation.reservation.model.Reservation;
+import bg.softuni.hotelreservation.review.model.Review;
 import bg.softuni.hotelreservation.room.model.Room;
 import jakarta.persistence.*;
 
@@ -25,6 +26,8 @@ public class Hotel {
     private Double rating;
     @Column(nullable = false)
     private boolean active;
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Review> reviews;
     @OneToOne(cascade = CascadeType.ALL)
     private Reservation reservation;
     @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -81,6 +84,14 @@ public class Hotel {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Reservation getReservation() {

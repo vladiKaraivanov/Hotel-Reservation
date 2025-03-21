@@ -37,7 +37,35 @@
     </div>
     <h3 th:text="'Reserved Rooms: ' + ${#lists.size(reservedRooms)}">Reserved Rooms</h3>
 
-<!--    <div class="hotel-rooms">-->
+
+    <form class="form-review" th:action="@{/hotel/reviews/add}" th:object="${reviewBinding}" method="post">
+        <input type="hidden" th:field="*{hotelID}" th:value="*{hotelID}" />
+        <h3 >Make your review</h3>
+        <div>
+            <label for="title">Заглавие:</label>
+            <input type="text" id="title" th:field="*{title}" required>
+        </div>
+        <div>
+            <label for="content">Коментар:</label>
+            <textarea id="content" th:field="*{content}" required></textarea>
+        </div>
+        <div>
+            <label for="rating">Оценка:</label>
+            <select id="rating" th:field="*{rating}" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div>
+            <input class="submit-review" type="submit" value="Sand Review">
+        </div>
+    </form>
+
+
+    <!--    <div class="hotel-rooms">-->
 <!--        <p th:text="'Free Rooms: ' + ${#lists.size(freeRooms)}">Free Rooms</p>-->
 
 <!--        <p th:text="'Reserved Rooms: ' + ${#lists.size(reservedRooms)}">Reserved Rooms</p>-->
@@ -45,18 +73,18 @@
 
 
     <!-- Форма за резервация -->
-    <div class="reservation-form">
-        <h2>Make a Reservation</h2>
-        <form th:action="@{/hotels/{id}/reserve(id=${hotel.id})}" method="post">
-            <label for="checkInDate">Check-in Date:</label>
-            <input type="date" id="checkInDate" name="checkInDate" required>
+<!--    <div class="reservation-form">-->
+<!--        <h2>Make a Reservation</h2>-->
+<!--        <form th:action="@{/hotels/{id}/reserve(id=${hotel.id})}" method="post">-->
+<!--            <label for="checkInDate">Check-in Date:</label>-->
+<!--            <input type="date" id="checkInDate" name="checkInDate" required>-->
 
-            <label for="checkOutDate">Check-out Date:</label>
-            <input type="date" id="checkOutDate" name="checkOutDate" required>
+<!--            <label for="checkOutDate">Check-out Date:</label>-->
+<!--            <input type="date" id="checkOutDate" name="checkOutDate" required>-->
 
-            <button type="submit" class="reserve-button">Reserve Now</button>
-        </form>
-    </div>
+<!--            <button type="submit" class="reserve-button">Reserve Now</button>-->
+<!--        </form>-->
+<!--    </div>-->
 </main>
 
 <footer th:replace="~{fragments/commons :: footer}"></footer>

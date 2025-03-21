@@ -48,7 +48,7 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profile(@RequestParam(value = "registeredUsername", required = false) String registeredUsername, Model model) {
-        System.out.println("Received username in /profile GET: " + registeredUsername);
+//        System.out.println("Received username in /profile GET: " + registeredUsername);
         model.addAttribute("registeredUsername", registeredUsername); // Запазваме го за Thymeleaf
         return "/personal-information";
     }
@@ -69,7 +69,7 @@ public class UserController {
 //        System.out.println("Received username in /profile POST: " + registeredUsername);
 
         userService.addProfileInformation(userAdditionalInformationBindingModel, registeredUsername);
-        return "redirect:/";
+        return "redirect:/users/login";
     }
 
     @GetMapping("/login")

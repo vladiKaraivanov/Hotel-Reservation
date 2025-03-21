@@ -1,5 +1,6 @@
 package bg.softuni.hotelreservation.user.model;
 
+import bg.softuni.hotelreservation.review.model.Review;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -26,6 +27,8 @@ public class User {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRoleEnum role;
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Review> reviews;
     @Column
     private Boolean active;
     @ElementCollection
@@ -89,6 +92,14 @@ public class User {
 
     public void setRole(UserRoleEnum role) {
         this.role = role;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public Boolean getActive() {

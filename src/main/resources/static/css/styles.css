@@ -349,3 +349,44 @@ body {
 .clickable-image:hover {
     transform: scale(1.05);
 }
+input[type="text"], textarea, select {
+    width: 100%; /* Заема цялата ширина на контейнера */
+    padding: 10px; /* Добавя подплънка за по-добър външен вид */
+    margin: 8px 0; /* Отстъп между елементите */
+}
+
+textarea {
+    height: 150px; /* По-голяма височина за полето за коментари */
+}
+.form-review {
+    margin-top: 50px;
+    background-color: #ffffff; /* Светъл фон за контраст със синия фон на страницата */
+    border: 1px solid #cccccc; /* Рамка за по-добра видимост */
+    padding: 20px; /* Подплънка вътре във формата */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Сенки за по-добро визуално отделяне */
+}
+
+.submit-review  {
+    background-color: #4CAF50; /* Зелен цвят за бутона */
+    color: white; /* Бял текст */
+    border: none; /* Премахване на рамката */
+    padding: 10px 20px; /* Подплънка за по-добър външен вид */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; /* Курсор под формата на пръстче при ховър */
+    transition: background-color 0.3s; /* Анимация при ховър */
+}
+
+.submit-review :hover {
+    background-color: #45a049; /* По-тъмен цвят при ховър */
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -3,6 +3,7 @@ package bg.softuni.hotelreservation.web.dto;
 import bg.softuni.hotelreservation.user.model.UserRoleEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -15,6 +16,7 @@ public class UserBindingModel {
     @Size(max = 20)
     private String lastName;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
     @Email
     private String email;

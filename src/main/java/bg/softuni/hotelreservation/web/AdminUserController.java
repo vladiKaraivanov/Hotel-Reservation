@@ -58,9 +58,9 @@ public class AdminUserController {
     public List<UserViewModel> userViewModels() {
         return new ArrayList<>(userService.getAllUsers());
     }
-    @ModelAttribute("userBinding")
-    public UserBindingModel manageUser() {
-        return new UserBindingModel();
-    }
+//    @ModelAttribute("userBinding")
+//    public UserBindingModel manageUser() {
+//        return new UserBindingModel();
+//    }
 
 }
