@@ -38,6 +38,13 @@ public class Hotel {
     public Hotel() {
     }
 
+    public Hotel(UUID uuid, String name, String address, boolean active) {
+        this.id = uuid;
+        this.name = name;
+        this.address = address;
+        this.active = active;
+    }
+
     public UUID getId() {
         return id;
     }

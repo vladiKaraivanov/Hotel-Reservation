@@ -1,6 +1,7 @@
 package bg.softuni.hotelreservation.user.model;
 
 import bg.softuni.hotelreservation.review.model.Review;
+import bg.softuni.hotelreservation.notificationEvent.model.Notification;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -31,6 +32,8 @@ public class User {
     private List<Review> reviews;
     @Column
     private Boolean active;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Notification> notification;
     @ElementCollection
     private List<String> interests;
 
@@ -116,6 +119,14 @@ public class User {
 
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
+    }
+
+    public List<Notification> getNotification() {
+        return notification;
+    }
+
+    public void setNotification(List<Notification> notification) {
+        this.notification = notification;
     }
 
     public List<String> getInterests() {

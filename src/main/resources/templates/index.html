@@ -21,7 +21,7 @@
                 <h3 th:text="${hotel.name}">Hotel Name</h3>
                 <p th:text="${#strings.length(hotel.description) > 100 ? #strings.substring(hotel.description, 0, 100) + '...' : hotel.description}">
                     Hotel description goes here...</p>
-                <small th:text="|Rating: ${hotel.rating}⭐|"></small>
+                <small th:text="|Rating: ${#numbers.formatDecimal(hotel.rating, 1, 1)} ⭐|"></small>
                 <a th:href="@{/hotels/{id}/details(id=${hotel.id})}" class="view-more-button">View More</a>
             </div>
     </div>

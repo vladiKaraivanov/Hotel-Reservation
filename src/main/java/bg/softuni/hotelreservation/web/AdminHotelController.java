@@ -26,8 +26,8 @@ public class AdminHotelController {
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/edit/{id}")
     public String editHotel(@PathVariable("id") UUID id, Model model) {
-        if (hotelService.findHotelById(id) != null) {
-            HotelViewModel hotelViewModel = hotelService.findHotelById(id);
+        if (hotelService.findViewHotelById(id) != null) {
+            HotelViewModel hotelViewModel = hotelService.findViewHotelById(id);
             model.addAttribute("hotelView", hotelViewModel);
             return "admin/edit";
         }

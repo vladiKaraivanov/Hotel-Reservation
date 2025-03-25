@@ -38,7 +38,7 @@ private final ModelMapper modelMapper;
     @GetMapping("/hotels/{hotelId}/add-room")
     public String showAddRoomForm(@PathVariable UUID hotelId, Model model) {
 
-        HotelViewModel hotel = hotelService.findHotelById(hotelId);
+        HotelViewModel hotel = hotelService.findViewHotelById(hotelId);
         model.addAttribute("hotelName", hotel.getName());
         model.addAttribute("hotelId", hotelId);
         model.addAttribute("roomBindingModel", new RoomBindingModel());

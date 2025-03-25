@@ -11,6 +11,7 @@ public class HotelDetailsViewModel {
     private String name;
     private String address;
     private String description;
+    private Double rating;
     private List<Room> rooms;
 
     public List<Room> getRooms() {
@@ -56,6 +57,14 @@ public class HotelDetailsViewModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public List<Image> getImages() {

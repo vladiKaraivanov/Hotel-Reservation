@@ -16,17 +16,17 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-    @Column(nullable = false)
+    @Column
     @Size(min = 5, max = 20)
     private String title;
-    @Column(nullable = false,columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT")
     private String content;
     @Min(value = 1)
     @Max(value = 5)
-    private int rating;
+    private Integer rating;
     @ManyToOne
     private User author;
-    @Column(nullable = false)
+    @Column()
     private LocalDate dateOfReview;
     @ManyToOne
     private Hotel hotel;
@@ -62,7 +62,7 @@ public class Review {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
