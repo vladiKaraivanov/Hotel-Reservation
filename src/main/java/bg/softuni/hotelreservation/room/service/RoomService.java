@@ -3,6 +3,7 @@ package bg.softuni.hotelreservation.room.service;
 import bg.softuni.hotelreservation.hotel.model.Hotel;
 import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
 import bg.softuni.hotelreservation.room.model.Room;
+import bg.softuni.hotelreservation.room.model.RoomDto;
 import bg.softuni.hotelreservation.room.repository.RoomRepository;
 import bg.softuni.hotelreservation.web.dto.RoomBindingModel;
 import jakarta.persistence.EntityNotFoundException;
@@ -60,5 +61,10 @@ public class RoomService {
     public List<Room> findByHotelIdAndReservedTrue(UUID id) {
         return roomRepository.findReservedRoomsByHotelId(id);
 
+    }
+
+    public RoomDto findRoomById(UUID id) {
+        return roomRepository.findById(id).map(room -> modelMapper.map(room, RoomDto.class))
+                .orElseThrow(() -> new EntityNotFoundException("Room not found"));
     }
 }

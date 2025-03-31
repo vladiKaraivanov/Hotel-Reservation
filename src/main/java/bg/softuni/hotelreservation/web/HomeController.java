@@ -28,12 +28,16 @@ public class HomeController {
         List<Hotel> hotels = hotelService.getAllHotels();
         model.addAttribute("hotels", hotels);
 
-        User user = userService.findUserById(authenticationDetails.getId());
-        List<Notification> unreadNotification = user.getNotification().stream()
-                .filter(notification -> !notification.isReadStatus()).toList();
+//        if (authenticationDetails != null) {
+//            User user = userService.findUserById(authenticationDetails.getId());
+//            List<Notification> unreadNotification = user.getNotification().stream()
+//                    .filter(notification -> !notification.isReadStatus())
+//                    .toList();
+//            model.addAttribute("unreadNotification", unreadNotification);
+//            model.addAttribute("unreadCount", unreadNotification.size());
+//            THEY ARE ADDED IN GLOBAL MODEL ATTRIBUTES
+//        }
 
-//        model.addAttribute("unreadNotification", unreadNotification);
-//        model.addAttribute("unreadCount", unreadNotification.size()); THEY ARE ADDED IN GLOBAL MODEL ATTRIBUTES
         return "index";
     }
 

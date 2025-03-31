@@ -1,6 +1,7 @@
 package bg.softuni.hotelreservation.hotel.service;
 
 import bg.softuni.hotelreservation.hotel.model.Hotel;
+import bg.softuni.hotelreservation.hotel.model.HotelDto;
 import bg.softuni.hotelreservation.hotel.repository.HotelRepository;
 import bg.softuni.hotelreservation.reservation.model.Reservation;
 import bg.softuni.hotelreservation.reservation.repository.ReservationRepository;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -36,6 +38,10 @@ public class HotelService {
 
     public List<Hotel> getAllHotels() {
         return hotelRepository.findAll();
+    }
+    public HotelDto getHotelById(UUID id) {
+        Hotel hotel = hotelRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Hotel not found") );
+        return modelMapper.map(hotel, HotelDto.class);
     }
 
     public HotelViewModel findViewHotelById(UUID id) {
